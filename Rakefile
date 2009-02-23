@@ -3,25 +3,25 @@ require 'rss/2.0'
 require 'open-uri'
 require 'fileutils'
 
-desc "Check mono is recent enough and correctly installed"
+desc "Check if Mono is recent enough and correctly installed"
 task :happy do
   print "Checking mono >= 2.2 installed - "
   version = `mono --version`.scan(/Mono JIT compiler version (\d+.\d+)/).to_s
   raise "FAILED! #{version}" unless version >= "2.2"
-  puts "OK"
+  puts "OK (#{version})"
 end
 
-desc "Run ir via mono"
-task :ir do
-  system! "mono Release/ir.exe"
+desc "Run IronRuby on Mono with the given args (ex: rake run ui/test_form_with_button.rb)"
+task :run do
+  system! ["mono Release/ir.exe",ARGV[1..-1]].flatten.join(' ')
 end
 
-desc "Download the nightly IronRuby binaries"
+desc "Download the IronRuby nightly binaries"
 task :download do
   url = latest_dlr_url
   zip = url.split('/').last
   
-  system! "curl -O #{zip}" unless File.exists?(zip)
+  system! "curl -O #{url}" unless File.exists?(zip)
   system! "unzip #{zip}"
   
   puts "Patching ir.exe.config for signing issues"
@@ -37,4 +37,3 @@ end
 def system!(cmd)
   raise "Failed: #{cmd}" unless system(cmd)
 end
-
