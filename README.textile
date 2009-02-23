@@ -9,8 +9,6 @@ h2. Checking the installation
 
 Run the following command:
 
-  rake happy
-
   bash-3.2$ rake happy
   (in /Users/thbar/Work/git/ironruby-labs)
   Checking mono >= 2.2 installed - OK (2.4)
