@@ -15,17 +15,20 @@ desc "Run IronRuby on Mono with the given args (ex: rake run ui/test_form_with_b
 task :run do
   system! ["mono Release/ir.exe",ARGV[1..-1]].flatten.join(' ')
 end
-
+  
 desc "Download the IronRuby nightly binaries"
 task :download do
   url = latest_dlr_url
   zip = url.split('/').last
-  
   system! "curl -O #{url}" unless File.exists?(zip)
   system! "unzip #{zip}"
-  
-  puts "Patching ir.exe.config for signing issues"
-  cp "ir.no-key.exe.config", "Release/ir.exe.config"
+end
+
+desc "Revert to a previously downloaded zip of binaries, in case something doesn't work anymore in latest build"
+task :revert do
+  version = ENV['version']
+  raise "specify a DLR version to revert to." if version.nil?
+  system! "unzip DLR.#{version}.release.zip"
 end
 
 def latest_dlr_url
