@@ -1,19 +1,20 @@
 require File.dirname(__FILE__) + '/common'
 
 form = Form.new
-form.menu = MainMenu.new
-fileMenu = form.menu.menu_items.add("&File")
 
-item = MenuItem.new("&New")
-item.click do |s,args|
-  MessageBox.Show("Oh, I'm clicked...")
-end
-fileMenu.menu_items.add(item)
+menu = MainMenu.new
 
-item = MenuItem.new("&Quit")
-item.click do |s,args|
-  Application.Exit
-end
-fileMenu.menu_items.add(item)
+# indent to make it easier to read
+fileItem = menu.menu_items.add("&File")
+  newItem = fileItem.menu_items.add("&New")
+    newItem.menu_items.add("Spreadsheet")
+    newItem.menu_items.add("Document")
+  fileItem.menu_items.add("&Quit").click { |s,e| Application.Exit }
+
+toolsItem = menu.menu_items.add("&Tools")
+  toolsItem.menu_items.add("&PowerBlade").click { |s,e| MessageBox.Show("Powerblades are amazing...") }
+  toolsItem.menu_items.add("&Scissors")
+
+form.menu = menu
 
 Application.Run(form)
