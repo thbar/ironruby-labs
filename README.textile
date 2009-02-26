@@ -17,7 +17,15 @@ h2. Download latest IronRuby bits
 
   rake download
 
-Everything should be downloaded and unpacked under the Release folder, then a quick patch should be applied to ir.exe.config for signing issues (may not be necessary in the future).
+Everything should be downloaded and unpacked under the Release folder.
+
+h2. Revert to a previously downloaded version of the IronRuby bits
+
+In case you meet some kind of regression, you can revert to a previously downloaded file with:
+
+  rake revert version=10606
+
+(Look for files named DLR.xxxxx.release.zip on your disk)
 
 h2. Running an IronRuby file
 
