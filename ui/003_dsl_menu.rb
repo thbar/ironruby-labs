@@ -10,11 +10,12 @@ form.menu = MainMenu.build do
       item("Spreadsheet")
       item("Document")
     }
-    item "&Quit", lambda { Application.Exit }
+    item("&Quit").click { Application.Exit }
   }
   item("&Tools") {
-    item "&PowerBlade", lambda { MessageBox.Show("Powerblades are amazing...") }
-    item "&Scissors"
+    item("&PowerBlade").click { MessageBox.Show("Powerblades are amazing...") }
+    # alternate form, with lambda instead of chained call
+    item "&Scissors", lambda { MessageBox.Show("Scissors are nice, too") }
   }
 end
 

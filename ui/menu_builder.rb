@@ -15,6 +15,10 @@ class MainMenu
     end
   end
 
+  # add a new menu item.
+  # to receive click event:
+  # - pass an optional lambda { }
+  # - or chain a .click { } call after item()
   def item(label,click_handler=nil)
     @parents ||= [self]
     @parents.push(@parents.last.menu_items.add(label))
