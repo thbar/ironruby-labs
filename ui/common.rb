@@ -8,4 +8,4 @@ include System
 include System::Windows::Forms
 include System::Drawing 
 include System::Collections
-include Microsoft::Scripting::Hosting
+include System::ComponentModel

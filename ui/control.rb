@@ -1,4 +1,4 @@
-# Sugar over Control
+# Deprecated! Use Instanciator instead - or use Magic directly
 class Control
   # allows Button.build(:text => "Yeah")
   def self.build(options={})
