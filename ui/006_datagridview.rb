@@ -3,8 +3,6 @@ require 'common'
 require 'magic'
 require 'menu_builder'
 
-$KCODE = 'UTF8'
-
 =begin
 a few links that might come handy:
 - http://dotnetperls.com/Content/DataGridView-Tips.aspx
