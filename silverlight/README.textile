@@ -1,0 +1,5 @@
+h1. Running an application
+
+  agdlr-0.4.0/script/server /d:001_hello_world /b:index.html
+
+That's all for the moment.
