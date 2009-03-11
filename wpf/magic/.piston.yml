@@ -1,7 +1,7 @@
 --- 
 format: 1
 handler: 
-  commit: 936128dd9f50fc40cb7a3788ac9007a81e5eac09
+  commit: 9cdec3d718d2873b64451a6db8c41ff868a1fdd4
   branch: master
 repository_url: git://github.com/thbar/magic.git
 lock: false
